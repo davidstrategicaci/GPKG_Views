@@ -45,7 +45,7 @@ CREATE VIEW average_income AS
 CREATE VIEW population AS
                 SELECT p.couname as county, t.name as district, cast(p.population as int) as population, t.geom as geometry FROM tl_2016_51_cousub t
                 	JOIN county_pop_2010 p ON p.countyfp = t.countyfp;
-                  ```
+```
 
 - `county_election_results`
 
@@ -56,7 +56,7 @@ CREATE VIEW county_election_results AS
                     JOIN
                 (select countyfp, couname || ' COUNTY' as county, population from county_pop_2010) p ON p.county = g. localityname COLLATE NOCASE
             JOIN tl_2016_51_cousub t ON t.countyfp=p.countyfp;
-            ```
+```
 
 -`party_breakdown`
 
@@ -84,7 +84,7 @@ CREATE VIEW party_breakdown AS
         		LEFT JOIN
         	(select localityname as county, sum(total_votes) as total_votes from county_election_results where party IS NULL  group by localityname, party) w on w.county = c.county
         		JOIN Virginia2003 v ON v.name || ' COUNTY' = c.county collate NOCASE;
-                    ```
+```
 
 ## Qgis 3.2-Bonn
 
