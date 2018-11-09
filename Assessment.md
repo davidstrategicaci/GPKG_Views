@@ -20,7 +20,7 @@ It contains 5 tables:
 The Following views where created using the Sqlite3 Library. Each view was inserted in to  `gpkg_contents` and `gpkg_geometry_columns` tables as feature tables.
 
 - `average_income`
-+
+
 ```SQL
 CREATE VIEW average_income AS
                 SELECT m.name as county, t.name as district, m.avg_income, t.geom as geometry FROM
@@ -40,15 +40,15 @@ CREATE VIEW average_income AS
 ```
 
 - `population`
-+
+
 ```SQL
 CREATE VIEW population AS
                 SELECT p.couname as county, t.name as district, cast(p.population as int) as population, t.geom as geometry FROM tl_2016_51_cousub t
                 	JOIN county_pop_2010 p ON p.countyfp = t.countyfp;
                   ```
-+
+
 - `county_election_results`
-+
+
 ```SQL
 CREATE VIEW county_election_results AS
             SELECT g.localityname, g.party, g.total_votes, p.population, t.geom as geometry FROM
@@ -57,9 +57,9 @@ CREATE VIEW county_election_results AS
                 (select countyfp, couname || ' COUNTY' as county, population from county_pop_2010) p ON p.county = g. localityname COLLATE NOCASE
             JOIN tl_2016_51_cousub t ON t.countyfp=p.countyfp;
             ```
-+
+
 -`party_breakdown`
-+
+
 ```SQL
 CREATE VIEW party_breakdown AS
         SELECT c.county, d.total_votes as Democratic,
